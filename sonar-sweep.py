@@ -1,4 +1,4 @@
-import argparse
+from argumentparsing import parseArguments
 
 def increasingDepthCount(input):
   count = 0
@@ -29,14 +29,7 @@ def slidingWindowIncreasingDepthCount(input, windowSize):
     return count
 
 def main():
-  parser = argparse.ArgumentParser(
-    prog = 'Sonar sweep program',
-    description = 'This program calculates increasing depth count, given an input file of depths',
-    epilog = 'Text at the bottom of help')
-  parser.add_argument('-i', '--input', required=True) # input filename
-  parser.add_argument('-p','--part',  type=int, choices=range(1, 3), default=2)
-  args = parser.parse_args()
-
+  args = parseArguments()
   count = 0
   if(args.part == 1):
     count = increasingDepthCount(args.input)
